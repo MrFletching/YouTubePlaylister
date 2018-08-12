@@ -4,12 +4,14 @@ const router = express.Router();
 const Video = require('../../models/Video');
 const youtubeService = require('../../services/youtube');
 
+// Get all videos
 router.get('/', (req, res, next) => {
     Video.find()
         .then((videos) => res.json(videos))
         .catch(next);
 });
 
+// Add a video
 router.post('/', (req, res, next) => {
     const id = req.body.id;
 
