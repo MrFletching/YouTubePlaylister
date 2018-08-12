@@ -1,4 +1,4 @@
-const request = require('request');
+const axios = require('axios');
 
 const config = require('../config/config');
 
@@ -16,27 +16,28 @@ function durationToSeconds(duration) {
 }
 
 function getVideo(id) {
-    const data = {key: key, part: 'id,snippet,contentDetails', id: id};
+    const params = {
+        key: key,
+        part: 'id,snippet,contentDetails',
+        id: id
+    };
 
-    request({url: `${rootURL}/videos`, qs: data, json: true}, (err, res, body) => {
-        if(err) {
-            console.error(err);
-            throw new Error('Failed to get video');
-        }
+    return axios.get(`${rootURL}/videos`, {params})
+        .then((res) => {
+            const video = res.data.items[0];
+            const snippet = video.snippet;
+            const contentDetails = video.contentDetails;
 
-        const video = body.items[0];
-        const snippet = video.snippet;
-        const contentDetails = video.contentDetails;
-
-        const duration = durationToSeconds(contentDetails.duration);
-
-        return {
-            id: video.id,
-            title: snippet.title,
-            channel: snippet.channelTitle,
-            duration: duration
-        }
-    })
+            const duration = durationToSeconds(contentDetails.duration);
+    
+            return {
+                id: video.id,
+                title: snippet.title,
+                channel: snippet.channelTitle,
+                duration: duration,
+                publishedAt: new Date(snippet.publishedAt)
+            };
+        });
 }
 
 module.exports = {

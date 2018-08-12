@@ -13,11 +13,11 @@ router.get('/', (req, res, next) => {
 router.post('/', (req, res, next) => {
     const id = req.body.id;
 
-    const newVideoData = youtubeService.getVideo(id);
-
-    const newVideo = new Video(newVideoData);
-
-    newVideo.save()
+    youtubeService.getVideo(id)
+        .then((newVideoData) => {
+            const newVideo = new Video(newVideoData);
+            return newVideo.save();
+        })
         .then((video) => res.json(video))
         .catch(next);
 });
