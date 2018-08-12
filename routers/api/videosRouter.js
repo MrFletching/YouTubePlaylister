@@ -11,7 +11,14 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
     console.log(req.body.id);
-    res.json({success: true});
+
+    const newVideo = new Video({
+        id: req.body.id
+    });
+
+    newVideo.save()
+        .then((video) => res.json(video))
+        .catch(next);
 });
 
 module.exports = router;
