@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
@@ -14,6 +15,9 @@ mongoose
 
 
 const app = express();
+
+// Log requests
+app.use(morgan('tiny'));
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({extended: false}));
