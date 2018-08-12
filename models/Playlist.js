@@ -5,7 +5,7 @@ const PlaylistSchema = new Schema({
     name: {type: String, required: true},
     videos: [{
         video: {type: Schema.Types.ObjectId, ref: 'video'},
-        addedAt: {type: Date, required: true}
+        addedAt: {type: Date, required: true, default: Date.now}
     }]
 });
 
