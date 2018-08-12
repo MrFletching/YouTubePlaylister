@@ -1,0 +1,25 @@
+{
+  "name": "youtube-playlister-server",
+  "version": "1.0.0",
+  "description": "YouTubePlaylister Server",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrFletching/YouTubePlaylister.git"
+  },
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "author": {
+    "name": "Tom Fletcher",
+    "email": "hello@tomfletcher.me",
+    "url": "http://tomfletcher.me"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
