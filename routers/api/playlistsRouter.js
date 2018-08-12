@@ -9,4 +9,17 @@ router.get('/', (req, res, next) => {
         .catch(next);
 });
 
+router.post('/', (req, res, next) => {
+    const name = req.body.name;
+
+    const newPlaylist = new Playlist({
+        name: name,
+        videos: []
+    });
+
+    newPlaylist.save()
+        .then((playlist) => res.json(playlist))
+        .catch(next);
+});
+
 module.exports = router;
