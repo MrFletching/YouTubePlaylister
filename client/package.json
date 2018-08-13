@@ -1,0 +1,26 @@
+{
+  "name": "youtube-playlister-client",
+  "version": "1.0.0",
+  "description": "YouTubePlaylister Client",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrFletching/YouTubePlaylister.git"
+  },
+  "author": {
+    "name": "Tom Fletcher",
+    "email": "hello@tomfletcher.me",
+    "url": "http://tomfletcher.me"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
