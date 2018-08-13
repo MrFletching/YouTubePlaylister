@@ -35,7 +35,9 @@ router.get('/:id', (req, res, next) => {
                 let find = playlist.videoData.find((videoItem) => {
                     return videoItem._id.equals(playlistVideo.video);
                 });
-                return find;
+                playlistVideo.video = find;
+
+                return playlistVideo;
             });
 
             delete playlist.videoData;
@@ -87,6 +89,17 @@ router.post('/:id/videos', (req, res, next) => {
         .catch(next);
 });
 
+// Delete a video from a playlist
+router.delete('/:id/videos/:videoID', (req, res, next) => {
+    const playlistID = req.params.id;
+    const videoID = req.params.videoID;
+
+    Playlist.update({_id: playlistID}, {$pull: {videos: {_id: videoID}}})
+        .then((result) => res.json(result))
+        .catch(next);
+});
+
+// Delete a playlist
 router.delete('/:id', (req, res, next) => {
     const id = req.params.id;
     
