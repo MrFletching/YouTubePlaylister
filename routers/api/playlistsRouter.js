@@ -18,32 +18,9 @@ router.get('/:id', (req, res, next) => {
     const id = req.params.id;
 
     Playlist
-        .aggregate([
-            {$match: {_id: mongoose.Types.ObjectId(id)}},
-            {$lookup: {
-                from: 'videos',
-                localField: 'videos.video',
-                foreignField: '_id',
-                as: 'videoData'
-            }}
-        ])
-        .then((playlists) => {
-            const playlist = playlists[0];
-            
-            // Match video ID to video data
-            playlist.videos = playlist.videos.map((playlistVideo) => {
-                let find = playlist.videoData.find((videoItem) => {
-                    return videoItem._id.equals(playlistVideo.video);
-                });
-                playlistVideo.video = find;
-
-                return playlistVideo;
-            });
-
-            delete playlist.videoData;
-
-            res.json(playlist);
-        })
+        .findById(id)
+        .populate('videos.video')
+        .then((playlist) => res.json(playlist))
         .catch(next);
 });
 
