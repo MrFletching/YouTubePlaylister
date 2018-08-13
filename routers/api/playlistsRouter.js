@@ -87,4 +87,12 @@ router.post('/:id/videos', (req, res, next) => {
         .catch(next);
 });
 
+router.delete('/:id', (req, res, next) => {
+    const id = req.params.id;
+    
+    Playlist.findByIdAndRemove(id)
+        .then(() => res.json({success: true}))
+        .catch(next);
+});
+
 module.exports = router;
