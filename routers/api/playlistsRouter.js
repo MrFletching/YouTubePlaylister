@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
 
 const Playlist = require('../../models/Playlist');
@@ -7,8 +8,40 @@ const youtubeService = require('../../services/youtube');
 
 // Get all playlists
 router.get('/', (req, res, next) => {
-    Playlist.find()
+    Playlist.find({}, {videos:0})
         .then((playlists) => res.json(playlists))
+        .catch(next);
+});
+
+// Get a single playlist
+router.get('/:id', (req, res, next) => {
+    const id = req.params.id;
+
+    Playlist
+        .aggregate([
+            {$match: {_id: mongoose.Types.ObjectId(id)}},
+            {$lookup: {
+                from: 'videos',
+                localField: 'videos.video',
+                foreignField: '_id',
+                as: 'videoData'
+            }}
+        ])
+        .then((playlists) => {
+            const playlist = playlists[0];
+            
+            // Match video ID to video data
+            playlist.videos = playlist.videos.map((playlistVideo) => {
+                let find = playlist.videoData.find((videoItem) => {
+                    return videoItem._id.equals(playlistVideo.video);
+                });
+                return find;
+            });
+
+            delete playlist.videoData;
+
+            res.json(playlist);
+        })
         .catch(next);
 });
 
