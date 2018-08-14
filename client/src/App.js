@@ -10,10 +10,12 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Sidebar />
-        <div className="content">
-          <Player />
-          <Playlist />
+        <div className="body">
+          <Sidebar />
+          <div className="content">
+            <Player />
+            <Playlist />
+          </div>
         </div>
       </div>
     );

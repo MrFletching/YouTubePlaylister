@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PlaylistTable from './PlaylistTable';
+import './Playlist.css';
 
 class Playlist extends Component {
   render() {

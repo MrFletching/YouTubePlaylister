@@ -9,3 +9,7 @@ body {
   background-color: #181818;
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
+
+#root {
+  height: 100%;
+}

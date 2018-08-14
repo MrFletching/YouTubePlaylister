@@ -1,0 +1,25 @@
+.PlaylistTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.PlaylistTable th {
+  text-align: left;
+  text-transform: uppercase;
+  font-weight: normal;
+  color: #A0A0A0;
+  letter-spacing: 1px;
+}
+
+.PlaylistTable td, .PlaylistTable th {
+  border-bottom: 1px solid #282828;
+  padding: 12px;
+}
+
+.PlaylistTable tbody tr:hover {
+  background-color: #282828;
+}
+
+.PlaylistTable .col-duration {
+  text-align: right;
+}
