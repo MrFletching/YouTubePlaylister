@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class PlaylistTable extends Component {
   render() {
     return (
-      <table className="playlist-table">
+      <table className="PlaylistTable">
         <thead>
           <tr>
             <th>Title</th>

@@ -4,7 +4,7 @@ import PlaylistTable from './PlaylistTable';
 class Playlist extends Component {
   render() {
     return (
-      <div className="playlist">
+      <div className="Playlist">
         <h2>Programming</h2>
         <div className="meta">5 videos, 42 Minutes</div>
 
