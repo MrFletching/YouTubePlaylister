@@ -9,9 +9,25 @@
 
 .Sidebar h3 {
     margin: 0;
-    padding: 15px;
+    padding: 15px 15px 8px 15px;
     font-weight: normal;
     text-transform: uppercase;
     font-size: 16px;
     letter-spacing: 1px;
+}
+
+.Sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.Sidebar li {
+    margin: 0;
+    padding: 8px 15px 8px 40px;
+}
+
+.Sidebar li:hover {
+    background-color: #444444;
+    cursor: pointer;
 }
