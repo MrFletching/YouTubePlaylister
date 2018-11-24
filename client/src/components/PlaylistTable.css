@@ -17,6 +17,10 @@
   padding: 12px;
 }
 
+.PlaylistTable tbody tr {
+  cursor: pointer;
+}
+
 .PlaylistTable tbody tr:hover {
   background-color: #282828;
 }

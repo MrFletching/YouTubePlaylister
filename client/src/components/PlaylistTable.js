@@ -18,7 +18,7 @@ class PlaylistTable extends Component {
     const { playlistVideos } = this.props;
 
     const videoRows = playlistVideos.map((playlistVideo) => (
-      <tr key={playlistVideo._id}>
+      <tr key={playlistVideo._id} onClick={() => this.props.onWatchVideo(playlistVideo)}>
         <td>{playlistVideo.video.title}</td>
         <td>{playlistVideo.video.channel}</td>
         <td className="col-duration">{this.secondsToTime(playlistVideo.video.duration)}</td>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { LOAD_PLAYLISTS_COMPLETE, LOAD_PLAYLIST_REQUEST, LOAD_PLAYLIST_COMPLETE } from './types';
+import { LOAD_PLAYLISTS_COMPLETE, LOAD_PLAYLIST_REQUEST, LOAD_PLAYLIST_COMPLETE, SELECT_PLAYLIST_VIDEO } from './types';
 
 // Load playlists
 export const loadPlaylists = () => (dispatch) => {
@@ -18,3 +18,10 @@ export const loadPlaylist = (playlistID) => (dispatch) => {
     .then((res) => dispatch({type: LOAD_PLAYLIST_COMPLETE, payload: res.data}))
     .catch((err) => dispatch({type: LOAD_PLAYLIST_COMPLETE, payload: null}));
 };
+
+// Watch playlist video
+export const watchPlaylistVideo = (playlistVideo) => (dispatch) => {
+  console.log("dispatching");
+  console.log(playlistVideo);
+  dispatch({type: SELECT_PLAYLIST_VIDEO, payload: playlistVideo});
+}

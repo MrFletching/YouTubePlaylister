@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadPlaylist } from '../actions/playlistsActions';
+import { loadPlaylist, watchPlaylistVideo } from '../actions/playlistsActions';
 import PlaylistTable from './PlaylistTable';
 import './Playlist.css';
 
 class Playlist extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.onWatchVideo = this.onWatchVideo.bind(this);
+  }
 
   componentDidMount() {
     if(this.props.match.params.playlistID) {
@@ -16,6 +22,12 @@ class Playlist extends Component {
     if(this.props.match.params.playlistID !== nextProps.match.params.playlistID) {
       this.props.loadPlaylist(this.props.match.params.playlistID);
     }
+  }
+
+  onWatchVideo(playlistVideo) {
+    console.log("calling watchPlaylistVideo");
+    this.props.watchPlaylistVideo(playlistVideo);
+    console.log("called watchPlaylistVideo");
   }
 
   render() {
@@ -39,7 +51,7 @@ class Playlist extends Component {
           <h2>{playlist.name}</h2>
           <div className="meta">{playlistVideosCount} {videosNoun}, {totalDurationM} {minutesNoun}</div>
 
-          <PlaylistTable playlistVideos={playlist.videos} />
+          <PlaylistTable playlistVideos={playlist.videos} onWatchVideo={this.onWatchVideo} />
         </div>
       </div>
     );
@@ -50,4 +62,4 @@ const mapStateToProps = (state) => ({
   playlists: state.playlists
 });
 
-export default connect(mapStateToProps, { loadPlaylist })(Playlist);
+export default connect(mapStateToProps, { loadPlaylist, watchPlaylistVideo })(Playlist);
