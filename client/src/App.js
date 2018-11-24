@@ -23,7 +23,7 @@ class App extends Component {
             <div className="body">
               <Sidebar />
               <div className="content">
-                <Player />
+                <Player videoID="b7FxPsqfkOY" />
                 <Route exact path="/playlists/:playlistID" component={Playlist} />
               </div>
             </div>
