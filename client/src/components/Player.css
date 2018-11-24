@@ -1,4 +1,5 @@
 .Player {
-    background-color: black;
+    background-color: #111111;
     height: 400px;
+    text-align: center;
 }

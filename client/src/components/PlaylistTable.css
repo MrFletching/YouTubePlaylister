@@ -6,6 +6,7 @@
 .PlaylistTable th {
   text-align: left;
   text-transform: uppercase;
+  font-size: 14px;
   font-weight: normal;
   color: #A0A0A0;
   letter-spacing: 1px;
