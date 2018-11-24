@@ -36,3 +36,7 @@
     cursor: pointer;
     color: #EEEEEE;
 }
+
+.Sidebar li a.current {
+    color: #57adff;
+}
