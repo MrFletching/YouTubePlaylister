@@ -1,4 +1,4 @@
-import { LOAD_PLAYLISTS_COMPLETE, LOAD_PLAYLIST_COMPLETE } from '../actions/types';
+import { LOAD_PLAYLISTS_COMPLETE, LOAD_PLAYLIST_REQUEST, LOAD_PLAYLIST_COMPLETE } from '../actions/types';
 
 const initialState = {
   playlists: null
@@ -10,6 +10,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         playlists: action.payload
+      }
+    case LOAD_PLAYLIST_REQUEST:
+      return {
+        ...state,
+        playlist: null
       }
     case LOAD_PLAYLIST_COMPLETE:
       return {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { loadPlaylists } from '../actions/playlistsActions';
 import './Sidebar.css';
 
@@ -14,7 +15,11 @@ class Sidebar extends Component {
     let playlist_lis = null;
 
     if(playlists) {
-      playlist_lis = playlists.map((playlist) => (<li key={playlist._id}>{playlist.name}</li>));
+      playlist_lis = playlists.map((playlist) => (
+        <li key={playlist._id}>
+          <Link to={"/playlists/"+playlist._id}>{playlist.name}</Link>
+        </li>
+      ));
     }
 
     return (

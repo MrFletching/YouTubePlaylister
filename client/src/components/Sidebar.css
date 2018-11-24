@@ -23,12 +23,15 @@
     margin: 0;
 }
 
-.Sidebar li {
+.Sidebar li a {
+    display: block;
+    color: #A0A0A0;
+    text-decoration: none;
     margin: 0;
     padding: 8px 15px 8px 40px;
 }
 
-.Sidebar li:hover {
+.Sidebar li a:hover {
     background-color: #444444;
     cursor: pointer;
     color: #EEEEEE;

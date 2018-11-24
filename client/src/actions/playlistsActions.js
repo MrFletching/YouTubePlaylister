@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { LOAD_PLAYLISTS_COMPLETE, LOAD_PLAYLIST_COMPLETE } from './types';
+import { LOAD_PLAYLISTS_COMPLETE, LOAD_PLAYLIST_REQUEST, LOAD_PLAYLIST_COMPLETE } from './types';
 
 // Load playlists
 export const loadPlaylists = () => (dispatch) => {
@@ -12,6 +12,7 @@ export const loadPlaylists = () => (dispatch) => {
 
 // Load playlist
 export const loadPlaylist = (playlistID) => (dispatch) => {
+  dispatch({type: LOAD_PLAYLIST_REQUEST});
   axios
     .get('/api/playlists/'+playlistID)
     .then((res) => dispatch({type: LOAD_PLAYLIST_COMPLETE, payload: res.data}))
