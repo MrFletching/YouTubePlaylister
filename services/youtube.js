@@ -16,7 +16,7 @@ function durationToSeconds(duration) {
 }
 
 function getVideo(id) {
-    console.debug(`Getting video data for ID: ${id}`);
+    console.log(`Getting video data for ID: ${id}`);
 
     const params = {
         key: key,
