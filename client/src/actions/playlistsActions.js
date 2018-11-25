@@ -12,7 +12,7 @@ export const loadPlaylists = () => (dispatch) => {
 
 // Load playlist
 export const loadPlaylist = (playlistID) => (dispatch) => {
-  dispatch({type: LOAD_PLAYLIST_REQUEST});
+  dispatch({type: LOAD_PLAYLIST_REQUEST, payload: playlistID});
   axios
     .get('/api/playlists/'+playlistID)
     .then((res) => dispatch({type: LOAD_PLAYLIST_COMPLETE, payload: res.data}))
@@ -21,7 +21,17 @@ export const loadPlaylist = (playlistID) => (dispatch) => {
 
 // Watch playlist video
 export const watchPlaylistVideo = (playlistVideo) => (dispatch) => {
-  console.log("dispatching");
-  console.log(playlistVideo);
   dispatch({type: SELECT_PLAYLIST_VIDEO, payload: playlistVideo});
+}
+
+// Add video to playlist
+export const addVideoToPlaylist = (playlistID, videoID) => (dispatch) => {
+  console.log("Adding video to playlist");
+  console.log('/api/playlists/'+playlistID+'/videos');
+  console.log(videoID);
+
+  axios
+    .post('/api/playlists/'+playlistID+'/videos', {id: videoID})
+    .then((res) => dispatch(loadPlaylist(playlistID)))
+    .catch((err) => console.error("Failed to add video to playlist"));
 }

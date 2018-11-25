@@ -14,10 +14,15 @@ export default function(state = initialState, action) {
         playlists: action.payload
       }
     case LOAD_PLAYLIST_REQUEST:
-      return {
-        ...state,
-        playlist: null
+      if(state.playlist && action.payload === state.playlist._id) {
+        return state;
+      } else {
+        return {
+          ...state,
+          playlist: null
+        }
       }
+      
     case LOAD_PLAYLIST_COMPLETE:
       return {
         ...state,
