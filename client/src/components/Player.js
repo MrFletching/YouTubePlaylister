@@ -22,7 +22,7 @@ class Player extends Component {
     };
 
     return (
-      <div className="Player">
+      <div className="Player" key={watchPlaylistVideo._id}>
         <YouTube
           videoId={videoID}
           opts={opts}
