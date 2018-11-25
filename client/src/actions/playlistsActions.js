@@ -26,10 +26,6 @@ export const watchPlaylistVideo = (playlistVideo) => (dispatch) => {
 
 // Add video to playlist
 export const addVideoToPlaylist = (playlistID, videoID) => (dispatch) => {
-  console.log("Adding video to playlist");
-  console.log('/api/playlists/'+playlistID+'/videos');
-  console.log(videoID);
-
   axios
     .post('/api/playlists/'+playlistID+'/videos', {id: videoID})
     .then((res) => dispatch(loadPlaylist(playlistID)))

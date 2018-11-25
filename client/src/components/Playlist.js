@@ -31,9 +31,7 @@ class Playlist extends Component {
   }
 
   onWatchVideo(playlistVideo) {
-    console.log("calling watchPlaylistVideo");
     this.props.watchPlaylistVideo(playlistVideo);
-    console.log("called watchPlaylistVideo");
   }
 
   onAddVideo(event) {
@@ -50,7 +48,6 @@ class Playlist extends Component {
     }
 
     if(/^[a-zA-Z0-9]+$/.test(videoID)) {
-      console.log(videoID);
       this.props.addVideoToPlaylist(this.props.playlists.playlist._id, videoID);
     } else {
       console.error("Not a valid video ID");
