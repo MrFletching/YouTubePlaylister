@@ -20,7 +20,7 @@ class Playlist extends Component {
 
   componentWillReceiveProps(nextProps) {
     if(this.props.match.params.playlistID !== nextProps.match.params.playlistID) {
-      this.props.loadPlaylist(this.props.match.params.playlistID);
+      this.props.loadPlaylist(nextProps.match.params.playlistID);
     }
   }
 
