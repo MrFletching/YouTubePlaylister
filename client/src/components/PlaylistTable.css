@@ -28,3 +28,7 @@
 .PlaylistTable .col-duration {
   text-align: right;
 }
+
+.PlaylistTable .playing td {
+  color: #57adff;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './PlaylistTable.css';
 
 class PlaylistTable extends Component {
@@ -15,15 +16,23 @@ class PlaylistTable extends Component {
   }
 
   render() {
-    const { playlistVideos } = this.props;
+    const { playlistVideos, playlists } = this.props;
+    const watchPlaylistVideo = playlists.watchPlaylistVideo;
 
-    const videoRows = playlistVideos.map((playlistVideo) => (
-      <tr key={playlistVideo._id} onClick={() => this.props.onWatchVideo(playlistVideo)}>
-        <td>{playlistVideo.video.title}</td>
-        <td>{playlistVideo.video.channel}</td>
-        <td className="col-duration">{this.secondsToTime(playlistVideo.video.duration)}</td>
-      </tr>
-    ));
+    const videoRows = playlistVideos.map((playlistVideo) => {
+      const video = playlistVideo.video;
+      const duration = this.secondsToTime(video.duration);
+      const playing = watchPlaylistVideo && playlistVideo._id === watchPlaylistVideo._id;
+      const playingClass = playing ? 'playing' : '';
+
+      return (
+        <tr key={playlistVideo._id} className={playingClass} onClick={() => this.props.onWatchVideo(playlistVideo)}>
+          <td>{video.title}</td>
+          <td>{video.channel}</td>
+          <td className="col-duration">{duration}</td>
+        </tr>
+      )
+    });
 
     return (
       <table className="PlaylistTable">
@@ -42,7 +51,11 @@ class PlaylistTable extends Component {
   }
 }
 
-export default PlaylistTable;
+const mapStateToProps = (state) => ({
+  playlists: state.playlists
+});
+
+export default connect(mapStateToProps, {})(PlaylistTable);
 
 
         
